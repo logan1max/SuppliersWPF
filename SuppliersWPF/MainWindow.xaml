@@ -1,0 +1,21 @@
+﻿<Window x:Class="SuppliersWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SuppliersWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="20">
+            <Label Content="Авторизация" HorizontalAlignment="Center" FontSize="25"></Label>
+            <Separator></Separator>
+            <Label Content="Имя пользователя" FontSize="19"></Label>
+            <TextBox x:Name="tbLogin" FontSize="19"></TextBox>
+            <Label Content="Пароль" FontSize="19"></Label>
+            <TextBox x:Name="tbPassword" FontSize="19"></TextBox>
+            <Button Content="Start" FontSize="22" Margin="60 10"
+                Click="Button_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
