@@ -11,26 +11,16 @@ namespace SuppliersWPF
         public MainWindow()
         {
             InitializeComponent();
+
+            UserRepository userRepository = new UserRepository();
+
+            var users = userRepository.GetUsers();
+            var user1 = userRepository.Get(2);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private bool Authourization(string login, string password)
-        {
-            if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password))
-            {
-                return false;
-            }
-            else
-            {
-
-                return true;
-            }
-
-            return false;
         }
     }
 }
