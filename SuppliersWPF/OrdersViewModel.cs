@@ -6,15 +6,11 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuppliersWPF.Models
+namespace SuppliersWPF
 {
-    public class User : INotifyPropertyChanged
+    public class OrdersViewModel : INotifyPropertyChanged
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string surname { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)

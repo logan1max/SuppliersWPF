@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 
 namespace SuppliersWPF
@@ -16,6 +17,9 @@ namespace SuppliersWPF
 
             var users = userRepository.GetUsers();
             var user1 = userRepository.Get(2);
+
+            OrdersRepository ordersRepository = new OrdersRepository();
+            var orders = ordersRepository.GetOrderItems(1);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

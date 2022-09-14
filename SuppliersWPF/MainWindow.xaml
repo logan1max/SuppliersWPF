@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:SuppliersWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
+    
     <Grid>
         <StackPanel Margin="20">
             <Label Content="Авторизация" HorizontalAlignment="Center" FontSize="25"></Label>
