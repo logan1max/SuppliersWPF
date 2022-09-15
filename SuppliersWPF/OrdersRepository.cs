@@ -22,10 +22,10 @@ namespace SuppliersWPF
 
     public class OrdersRepository : IOrdersRepository
     {
-        string connectionString = "Server=.\\SQLEXPRESS;Initial Catalog=SuppliersDB;Integrated Security=True";
-        public OrdersRepository()
+        string connectionString;
+        public OrdersRepository(string conn)
         {
-            //    connectionString = conn;
+                connectionString = conn;
         }
         public List<ItemOrder> GetItems()
         {

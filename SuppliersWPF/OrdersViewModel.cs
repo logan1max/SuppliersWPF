@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -12,10 +13,8 @@ namespace SuppliersWPF
 {
     public class OrdersViewModel : INotifyPropertyChanged
     {
-        private int _id;
-
         private ItemOrder selectedItem;
-        public ObservableCollection<ItemOrder> Items { get; set; }
+        public List<ItemOrder> Items { get; set; }
         public ItemOrder SelectedItem
         {
             get { return selectedItem; }
@@ -46,7 +45,7 @@ namespace SuppliersWPF
 
         public OrdersViewModel()
         {
-            OrdersRepository ordersRepository = new OrdersRepository();
+            OrdersRepository ordersRepository = new OrdersRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
             var orders = ordersRepository.GetOrders();
             ObservableCollection<Order> _orders = new ObservableCollection<Order>();
@@ -59,14 +58,14 @@ namespace SuppliersWPF
 
         public void FillItems(int id)
         {
-            OrdersRepository ordersRepository = new OrdersRepository();
+            OrdersRepository ordersRepository = new OrdersRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             var items = ordersRepository.GetOrderItems(id);
             ObservableCollection<ItemOrder> _items = new ObservableCollection<ItemOrder>();
             foreach (var item in items)
             {
                 _items.Add(item);
             }
-            Items = _items;
+            Items = items;
             OnPropertyChanged("Items");
         }
 
@@ -78,15 +77,7 @@ namespace SuppliersWPF
                 return update ??
                     (update = new RelayCommand(obj =>
                     {
-                        OrdersRepository ordersRepository = new OrdersRepository();
-
-                        var items = ordersRepository.GetOrderItems(SelectedOrder.id);
-                        ObservableCollection<ItemOrder> _items = new ObservableCollection<ItemOrder>();
-                        foreach (var item in items)
-                        {
-                            _items.Add(item);
-                        }
-                        Items = _items;
+                        
                     }));
             }
         }

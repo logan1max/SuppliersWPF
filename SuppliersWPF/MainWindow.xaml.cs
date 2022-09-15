@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Windows;
 
 
@@ -18,7 +19,7 @@ namespace SuppliersWPF
             var users = userRepository.GetUsers();
             var user1 = userRepository.Get(2);
 
-            OrdersRepository ordersRepository = new OrdersRepository();
+            OrdersRepository ordersRepository = new OrdersRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             var orders = ordersRepository.GetOrderItems(1);
         }
 

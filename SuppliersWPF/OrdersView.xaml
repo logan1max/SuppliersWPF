@@ -36,9 +36,7 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>
-
-        
+        </ListBox>        
 
         <ListBox Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Items}" 
                  SelectedItem="{Binding SelectedItem}">

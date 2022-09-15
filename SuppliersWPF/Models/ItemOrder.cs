@@ -19,11 +19,11 @@ namespace SuppliersWPF.Models
         public string _addressSupplier;
         public double _phoneSupplier;
 
-        public int idItem
-        {
-            get { return _idItem; }
-            set { _idItem = value; OnPropertyChanged("idItem"); }
-        }
+        public int idItem { get; set; }
+        //{
+        //    get { return _idItem; }
+        //    set { _idItem = value; OnPropertyChanged("idItem"); }
+        //}
         public string nameItem
         {
             get { return _nameItem; }
