@@ -22,6 +22,8 @@ namespace SuppliersWPF
         public OrdersView()
         {
             InitializeComponent();
+
+            DataContext = new OrdersViewModel();
         }
     }
 }

@@ -15,6 +15,52 @@
         </Style>
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ListBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Orders}"
+                 SelectedItem="{Binding SelectedOrder}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="{Binding Path=id}" />
+                        <TextBlock Text="{Binding Path=name}" />
+                        <TextBlock Text="{Binding Path=cost}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
         
+
+        <ListBox Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Items}" 
+                 SelectedItem="{Binding SelectedItem}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="{Binding Path=idItem}" />
+                        <TextBlock Text="{Binding Path=nameItem}" />
+                        <TextBlock Text="{Binding Path=priceItem}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" DataContext="{Binding SelectedItem}">
+            <TextBlock Text="Выбранный элемент"  />
+            <TextBlock Text="Наименование поставщика" />
+            <TextBlock Text="{Binding nameSupplier, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Город поставщика" />
+            <TextBlock Text="{Binding addressSupplier, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Телефон поставщика" />
+            <TextBlock Text="{Binding phoneSupplier, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
     </Grid>
 </Window>

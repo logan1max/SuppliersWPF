@@ -14,6 +14,7 @@ namespace SuppliersWPF
     {
         void Create(ItemOrder item);
         void Delete(int id);
+        List<Order> GetOrders();
         List<ItemOrder> GetOrderItems(int id);
         List<ItemOrder> GetItems();
         void Update(ItemOrder item);
@@ -33,6 +34,22 @@ namespace SuppliersWPF
                 return db.Query<ItemOrder>("SELECT * FROM Users").ToList();
             }
         }
+
+        public List<Order> GetOrders()
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("select orders.id, Statuses.name, sum(price * quantity) as cost ");
+                sb.Append("from orders, statuses, Orders_goods ");
+                sb.Append("where Statuses.id = Orders.id_status ");
+                sb.Append("and Orders_goods.id_orders = Orders.id ");
+                sb.Append("group by Orders.id, statuses.name ");
+
+                return db.Query<Order>(sb.ToString()).ToList();
+            }
+        }
+
 
         public List<ItemOrder> GetOrderItems(int id)
         {
